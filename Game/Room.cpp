@@ -2,9 +2,10 @@
 
 
 
-Room::Room(std::string description)
+Room::Room(std::string description, bool containsBoss)
 {
 	this->description = description;
+	this->containsBoss = containsBoss;
 }
 
 
@@ -16,7 +17,7 @@ std::string Room::getDescription() {
 	return this->description;
 }
 
-void Room::setRooms(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom) {
+void Room::setRooms(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom) { 
 	this->northRoom = northRoom;
 	this->southRoom = southRoom;
 	this->eastRoom = eastRoom;
@@ -47,20 +48,20 @@ void Room::setDescription(int roomNum) { //Set each room's description!
 		this->description = "There's a very deep ravine blocking the trail... Good thing the bridge isn't out!";
 	}
 	else if (roomNum == 7) {
-		this->description = "";
+		this->description = "The trail follows the other side of the ravine and there's lots of loose shale and brush. Sometimes hidden things turn up under these...";
 	}
 	else if (roomNum == 8) {
-		this->description = "";
+		this->description = "The trail continues back into the woods. Along the side of the trail there's a locked chest";
 	}
 	else if (roomNum == 9) {
-		this->description = "";
+		this->description = "The forest is clearing and the observation tower is in sight! But something smells suspiciously like a rat...";
 	}
 	else if (roomNum == 10) {
-		this->description = "";
+		this->description = "The gate to the observation deck is locked. But that won't discourage you!";
 	}
 }	
 
-Room* Room::getRoom(std::string direction) {
+Room* Room::getRoom(std::string direction) { //See if a room exists in the direction the user wants to go
 	if (direction == "North" && this->northRoom != nullptr) {
 		return this->northRoom;
 	}

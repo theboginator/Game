@@ -61,3 +61,7 @@ void Game::buildMap() {
 
 	currentRoom = rooms[0];
 }
+
+void Game::beginGame() {
+	std::string userInput = "";
+}
