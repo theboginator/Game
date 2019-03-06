@@ -26,7 +26,7 @@ void Room::setRooms(Room* northRoom, Room* eastRoom, Room* southRoom, Room* west
 
 void Room::setDescription(int roomNum) { //Set each room's description!
 	if(roomNum == 0){
-		this->description = "Welcome to the cursed forest!\nYour objective: Brave the deadly trail to the observatory to view the Aurora Borealis, an incredibly rare phenomenon at this time of year, at this time of day, localized entirely in this area...\n.Use keywords NORTH, SOUTH, EAST, WEST to indicate direction.\nUse SEARCH to search an area, UNLOCK to open doors \(if you have a key!\), and WHEEDWHACK to use your weedwhacker.\n If you enter an area with an enemy, you MUST neutralize the enemy before going on. Good Luck!";
+		this->description = "Welcome to the cursed forest!\nYour objective: Brave the deadly trail to the observatory to view the Aurora Borealis, an incredibly rare phenomenon at this time of year, at this time of day, localized entirely in this area...\n.Use keywords NORTH, SOUTH, EAST, WEST to indicate direction.\nUse SEARCH to search an area, UNLOCK to open doors (if you have a key!), and WHEEDWHACK to use your weedwhacker.\n If you enter an area with an enemy, you MUST neutralize the enemy before going on. Good Luck!";
 	}
 	else if (roomNum == 1) {
 		this->description = "Open clearing with some grass, a river, and an odd-looking shrubbery";

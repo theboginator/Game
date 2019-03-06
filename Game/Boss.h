@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "player.h"
+
 class Boss
 {
 public:
@@ -17,7 +18,7 @@ public:
 
 	void configureBosses(std::string name, std::string playerName);
 	void setFightOptions(std::string name, std::string playerName);
-	int fightBoss(std::string name, Player player*); //Fight a boss! Returns the amount of damage as a result, or death or success!
+	int fightBoss(std::string name, Player* player); //Fight a boss! Returns the amount of damage as a result, or death or success!
 
 };
 

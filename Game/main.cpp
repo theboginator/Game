@@ -15,16 +15,7 @@ int main() {
 
 	theGame.buildMap(); //Build the game's map
 	theGame.beginGame(); //Start the game!
-	while (userInput != "QUIT") {
-		if (theGame.currentRoom != nullptr) {
-			std::cout << theGame.currentRoom->getDescription() << std::endl;
-		}
-
-		std::cout << "Where do you want to go? ";
-		std::getline(std::cin, userInput);
-
-		theGame.currentRoom = theGame.currentRoom->getRoom(userInput);
-	}
+	
 }
 
 //Set each room's adjacent rooms; use nullptr for no connections:
@@ -34,4 +25,15 @@ int main() {
 	4---1
 		|
 		2
+
+		while (userInput != "QUIT") {
+		if (theGame.currentRoom != nullptr) {
+			std::cout << theGame.currentRoom->getDescription() << std::endl;
+		}
+
+		std::cout << "Where do you want to go? ";
+		std::getline(std::cin, userInput);
+
+		theGame.currentRoom = theGame.currentRoom->getRoom(userInput);
+	}
 	*/
