@@ -6,6 +6,7 @@ class Player
 public:
 	Player();
 	~Player();
+<<<<<<< HEAD
 	std::string name;
 	std::vector<std::string> inventory;
 	int health; //Player's health out of 100
@@ -16,5 +17,9 @@ public:
 	void addItem(std::string item); //Add an item to inventory
 	void removeItem(std::string item); //Remove an item from inventory
 	void useItem(std::string item); //Use an item in the inventory; print
+=======
+	std::vector<std::string> inventory;
+
+>>>>>>> 8574591994b0842f7593183b33c57ae4e7536239
 };
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #pragma once
 #include "Boss.h"
 #include <iostream>
@@ -84,3 +85,17 @@ Boss::setFightOptions(std::string name, std::string playerName) { //Set up the f
 		fightOptions = "A. Ignore Mr. Ratburn\tB. Offer Mr. Ratburn some of your food\n C. Hit Mr. Ratburn";
 	}
 }
+=======
+#include "Boss.h"
+
+
+
+Boss::Boss()
+{
+}
+
+
+Boss::~Boss()
+{
+}
+>>>>>>> 8574591994b0842f7593183b33c57ae4e7536239
