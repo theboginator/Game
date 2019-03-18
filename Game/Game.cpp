@@ -57,9 +57,9 @@ void Game::setupRooms() {
 	rooms[4]->setRooms(rooms[3], rooms[5], nullptr, nullptr);
 	rooms[5]->setRooms(nullptr, nullptr, rooms[6], rooms[4]);
 	rooms[6]->setRooms(rooms[5], nullptr, rooms[7], nullptr);
-	rooms[7]->setRooms(nullptr, nullptr, rooms[3], rooms[1]);
-	rooms[8]->setRooms(rooms[2], nullptr, rooms[4], nullptr);
-	rooms[9]->setRooms(rooms[3], rooms[5], nullptr, nullptr);
+	rooms[7]->setRooms(rooms[6], nullptr, nullptr, rooms[8]);
+	rooms[8]->setRooms(nullptr, rooms[7], nullptr, rooms[9]);
+	rooms[9]->setRooms(nullptr, rooms[8], rooms[10], nullptr);
 
 	currentRoom = rooms[0];
 }
