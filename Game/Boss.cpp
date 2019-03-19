@@ -2,6 +2,7 @@
 #include "Boss.h"
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 Boss::Boss(std::string name, bool isEnabled, int roomNumber) {
 	this->name = name;
@@ -14,14 +15,15 @@ Boss::~Boss()
 }
 
 int Boss::fightBoss(std::string name, Player* player) { //Logic for fighting an enemy! Returns a damage amount (0 = win; 100 = death)
-	/*
+	
 	std::cout << challenge;
 	std::cout << fightOptions;
 	std::string response = "";
 	std::getline(std::cin, response);
+	std::transform(response.begin(), response.end(), response.begin(), ::tolower);
 	if (name == "trashman") {
 		if (response == "A" || response == "a") {
-			if(player.inventoryContains("hockey_stick") ){
+			if(player->inventoryContains("hockey_stick") ){
 				std::cout << "You hit Danny DeVito with a hockey stick. It's not very effective.\nDanny DeVito throws the trash can at you!";
 				//delay(2000);
 				std::cout << "You are INJURED \(-20 health\) but at least you can now attempt to escape...";
@@ -58,10 +60,13 @@ int Boss::fightBoss(std::string name, Player* player) { //Logic for fighting an 
 	}
 	else if (name == "skinner") {
 		if (response == "A" || response == "a") {
-
+		std:cout << "You IGNORE Principal Skinner. He seems offended you weren't interested in having steamed hams but doesnt bother you further.";
+		disabled = true;
+		return 0;
 		}
+		else if (
 	}
-	*/
+	
 	return 0;
 }
 

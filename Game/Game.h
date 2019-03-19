@@ -16,7 +16,9 @@ public:
 	std::vector<Boss*> bosses; //the array of bosses in the game
 	Room* currentRoom; //the room the player is currently in
 private:
+	std::string userInput = "";
 	void setupRooms();
+	std::string getUserCommand();
 	//void setupBosses();
 };
 

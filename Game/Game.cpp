@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 
 
@@ -64,43 +65,38 @@ void Game::setupRooms() {
 	currentRoom = rooms[0];
 }
 
+std::string Game::getUserCommand()
+{
+	std::cout << "\n\n\n";
+	std::cout << "What do you want to do? ";
+	std::getline(std::cin, userInput);
+	std::transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
+	std::cout << "\n\n\n";
+	return userInput;
+}
+
 /*
 void Game::setupBosses() {
 	bosses.push_back(new Boss())
 }
 */
 void Game::buildMap() {
-	/*Game Map:
-	0
-	|
-	1--2
-	   |
-	   3
-	   |
-	   4--5
-	      |
-		  6
-		  |
-	9--8--7
-	|
-	10
-	Build the array of rooms, and set the "has boss" parameter
-	*/
 	Game::setupRooms();
 	//Game::setupBosses();
 	
 }
 
 void Game::beginGame() {
-	std::string userInput = "";
-	while (userInput != "quit" && userInput != "QUIT") {
+	while (userInput != "quit") {
 		//if(currentRoom->containsBoss)
 		if (currentRoom != nullptr) {
 			std::cout << currentRoom->getDescription() << std::endl;
 		}
+		userInput = Game::getUserCommand();
 		std::cout << "\n\n\n";
-		std::cout << "Where do you want to go? ";
+		std::cout << "What do you want to do? ";
 		std::getline(std::cin, userInput);
+		std::transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
 		std::cout << "\n\n\n";
 		currentRoom = currentRoom->getRoom(userInput);
 

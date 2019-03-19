@@ -7,7 +7,7 @@ public:
 	
 	Player();
 	~Player();
-	/*
+	
 	std::string name;
 	std::vector<std::string> inventory;
 	int health; //Player's health out of 100
@@ -19,6 +19,6 @@ public:
 	void removeItem(std::string item); //Remove an item from inventory
 	void useItem(std::string item); //Use an item in the inventory; print
 	std::vector<std::string> inventory;
-	*/
+	
 };
 
