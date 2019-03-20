@@ -18,7 +18,8 @@ public:
 
 	void configureBosses(std::string name, std::string playerName);
 	void setFightOptions(std::string name, std::string playerName);
-	int fightBoss(std::string name, Player* player); //Fight a boss! Returns the amount of damage as a result, or death or success!
+	void introduceBoss(Boss* boss);
+	int fightBoss(Boss* boss, Player* player); //Fight a boss! Returns the amount of damage as a result, or death (100) or success(0)!
 
 };
 

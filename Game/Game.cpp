@@ -87,8 +87,15 @@ void Game::buildMap() {
 }
 
 void Game::beginGame() {
+	Player* currentPlayer;
 	while (userInput != "quit") {
-		//if(currentRoom->containsBoss)
+		if (currentRoom->containsBoss) {
+			Boss* currentBoss = currentRoom->getBoss(currentRoom->getNumber());
+			currentBoss->introduceBoss;
+			while (currentBoss->disabled != true) {
+				currentBoss->fightBoss(currentBoss, currentPlayer);
+			}
+		}
 		if (currentRoom != nullptr) {
 			std::cout << currentRoom->getDescription() << std::endl;
 		}

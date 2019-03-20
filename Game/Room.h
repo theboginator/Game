@@ -14,7 +14,9 @@ public:
 	void setRooms(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom);
 
 	Room* getRoom(std::string direction);
+	Boss* getBoss(Room* currentRoom);
 	bool containsBoss; //Boolean to show if there is a boss in this room
+	int getNumber; //Returns the room number
 
 private:
 	// Boss (if any)
