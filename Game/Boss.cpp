@@ -4,10 +4,8 @@
 #include <string>
 #include <algorithm>
 
-Boss::Boss(std::string name, bool isEnabled, int roomNumber) {
-	this->name = name;
-	this->disabled = isEnabled;
-	this->roomNumber = roomNumber;
+Boss::Boss() {
+
 }
 
 Boss::~Boss()
@@ -19,6 +17,16 @@ void introduceBoss(Boss* boss) {
 }
 
 int Boss::fightBoss(Boss* boss, Player* player) { //Logic for fighting an enemy! Returns a damage amount (0 = win; 100 = death)
+	/*NEW PLAN: fight boss is defined in each different subclass.
+	while boss !disabled
+		print fightoptions
+		get user response
+		do fight logic
+		print reponse
+		update damage and such
+
+		
+	*/
 	std::cout << boss->fightOptions;
 	std::string response = "";
 	std::getline(std::cin, response);

@@ -44,6 +44,10 @@ void Game::setupRooms() {
 	rooms.push_back(new Room("Room 9", true));
 	rooms.push_back(new Room("Room 10", false));
 
+	rooms[3] -> boss = new Trashman();
+
+
+
 	for (int ctr = 0; ctr <= 10; ctr++) {
 		rooms[ctr]->setDescription(ctr);
 	}
@@ -90,7 +94,7 @@ void Game::beginGame() {
 	Player* currentPlayer;
 	while (userInput != "quit") {
 		if (currentRoom->containsBoss) {
-			Boss* currentBoss = currentRoom->getBoss(currentRoom->getNumber());
+			Boss* currentBoss = currentRoom->getBoss();
 			currentBoss->introduceBoss;
 			while (currentBoss->disabled != true) {
 				currentBoss->fightBoss(currentBoss, currentPlayer);
@@ -100,11 +104,6 @@ void Game::beginGame() {
 			std::cout << currentRoom->getDescription() << std::endl;
 		}
 		userInput = Game::getUserCommand();
-		std::cout << "\n\n\n";
-		std::cout << "What do you want to do? ";
-		std::getline(std::cin, userInput);
-		std::transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
-		std::cout << "\n\n\n";
 		currentRoom = currentRoom->getRoom(userInput);
 
 	}

@@ -78,9 +78,3 @@ Room* Room::getRoom(std::string direction) { //See if a room exists in the direc
 		return this;
 	}
 }
-
-Boss * Room::getBoss(Room * currentRoom)
-{
-	return nullptr;
-}
-
