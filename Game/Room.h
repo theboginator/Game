@@ -1,5 +1,9 @@
 #pragma once
 #include "Boss.h"
+#include "Rat.h"
+#include "Mortimer.h"
+#include "Skinner.h"
+#include "Trashman.h"
 #include <string>
 
 class Room
@@ -13,8 +17,13 @@ public:
 	void setDescription(int roomNum);
 	void setRooms(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom);
 
-	Room* getRoom(std::string direction);
-	Boss* boss;
+	Room* getRoom(std::string direction); //Returns a room in the requested direction
+
+	Rat* ratburn; //Boss object to hold Mr. Ratburn
+	Mortimer* mortimer; //Boss object to hold Mortimer Mouse
+	Skinner* skinner; //Boss object to hold Seymour Skinner
+	Trashman* trashman; //Boss object to hold Danny DeVito
+
 	bool containsBoss; //Boolean to show if there is a boss in this room
 	int getNumber; //Returns the room number
 

@@ -44,9 +44,10 @@ void Game::setupRooms() {
 	rooms.push_back(new Room("Room 9", true));
 	rooms.push_back(new Room("Room 10", false));
 
-	rooms[3] -> boss = new Trashman();
-
-
+	rooms[3]->trashman = new Trashman();
+	rooms[4]->skinner = new Skinner();
+	rooms[6]->mortimer = new Mortimer();
+	rooms[9]->ratburn = new Rat();
 
 	for (int ctr = 0; ctr <= 10; ctr++) {
 		rooms[ctr]->setDescription(ctr);
