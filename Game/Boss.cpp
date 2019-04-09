@@ -16,6 +16,10 @@ void introduceBoss(Boss* boss) {
 	std::cout << boss->challenge;
 }
 
+std::string getBossWinsResponse() {
+	return bossWinsResponse;
+}
+
 int Boss::fightBoss(Boss* boss, Player* player) { //Logic for fighting an enemy! Returns a damage amount (0 = win; 100 = death)
 	/*NEW PLAN: fight boss is defined in each different subclass.
 	while boss !disabled

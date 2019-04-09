@@ -12,6 +12,7 @@ public:
 	~Game();
 	void buildMap();
 	void beginGame();
+	void endTheGame(bool win); //End the game, true = win, false = lose
 	std::vector<Room*> rooms; //the map of rooms in the game
 	std::vector<Boss*> bosses; //the array of bosses in the game
 	Room* currentRoom; //the room the player is currently in

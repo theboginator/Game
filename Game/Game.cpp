@@ -94,11 +94,17 @@ void Game::buildMap() {
 void Game::beginGame() {
 	Player* currentPlayer;
 	while (userInput != "quit") {
-		if (currentRoom->containsBoss) {
+		if (currentRoom->containsBoss) { //If the player enters a room with a boss the boss fight happens first
+			int damage;
 			Boss* currentBoss = currentRoom->getBoss();
-			currentBoss->introduceBoss;
-			while (currentBoss->disabled != true) {
-				currentBoss->fightBoss(currentBoss, currentPlayer);
+			currentBoss->introduceBoss; //Introduce the boss with his/her introduction
+			while (currentBoss->disabled != true && currentPlayer->health > 0) { //Until the user beats the boss
+				damage = currentBoss->fightBoss(currentBoss, currentPlayer); //Fight the boss, return the damage amount to player
+				currentPlayer->health -= damage;//update player damage
+			}
+			if (currentPlayer->health <= 0) {
+				std::cout << currentBoss->getBossWinsResponse();
+				endTheGame(false);
 			}
 		}
 		if (currentRoom != nullptr) {
