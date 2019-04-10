@@ -80,6 +80,19 @@ std::string Game::getUserCommand()
 	return userInput;
 }
 
+void endTheGame(bool victory) {
+	if (victory) {
+		std::cout << "Congratulations, you successfully navigated the cursed forest! Enjoy your view of the aurora borealis!";
+	}
+	else
+		std::cout << "You have died on the trail through the cursed forest.\n\nA. Dang it";
+	std::cout << "\n\n\n";
+	std::cout << "What do you want to do? ";
+	std::string answer;
+	std::getline(std::cin, answer);
+	
+
+}
 /*
 void Game::setupBosses() {
 	bosses.push_back(new Boss())
@@ -96,10 +109,10 @@ void Game::beginGame() {
 	while (userInput != "quit") {
 		if (currentRoom->containsBoss) { //If the player enters a room with a boss the boss fight happens first
 			int damage;
-			Boss* currentBoss = currentRoom->getBoss();
-			currentBoss->introduceBoss; //Introduce the boss with his/her introduction
-			while (currentBoss->disabled != true && currentPlayer->health > 0) { //Until the user beats the boss
-				damage = currentBoss->fightBoss(currentBoss, currentPlayer); //Fight the boss, return the damage amount to player
+			Boss currentBoss = currentRoom->getBoss();
+			currentBoss.introduceBoss; //Introduce the boss with his/her introduction
+			while (currentBoss.disabled != true && currentPlayer->health > 0) { //Until the user beats the boss
+				damage = currentBoss.fightBoss(currentPlayer); //Fight the boss, return the damage amount to player
 				currentPlayer->health -= damage;//update player damage
 			}
 			if (currentPlayer->health <= 0) {

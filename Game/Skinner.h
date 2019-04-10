@@ -7,5 +7,6 @@ class Skinner : public Boss
 public:
 	Skinner();
 	~Skinner();
+
 };
 
