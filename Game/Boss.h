@@ -25,7 +25,7 @@ public:
 	void setFightOptions(std::string name, std::string playerName);
 	void introduceBoss(Boss* boss);
 	std::string getBossWinsResponse(); //Return the boss's win response
-	int fightBoss(Player* player); //Fight a boss! Returns the amount of damage as a result, or death (100) or success(0)!
+	int fightBoss(Player player); //Fight a boss! Returns the amount of damage as a result, or death (100) or success(0)!
 
 };
 

@@ -19,12 +19,16 @@ public:
 	void removeItem(std::string item, int qty); //Remove a specific amount of an item from inventory
 	void useItem(std::string item); //Use an item in the inventory; print
 	std::string showInventory(); //Function to show inventory
-	int checkHealth; //Returns health
+	int checkHealth; //Returns health/
+	void hurt(int damage); // damage the player
+	void heal(int hp); //heal the player
 	int checkHunger; //Returns hunger
+	void feed(int food); //increments hunger by specified amount
+	
 	
 private:
 	int health; //Player's health out of 100
 	int hunger; //Player's hunger out of 100
-	std::vector<std::string> inventory;
+	std::vector<std::string> inventory; //holds the player's inventory
 };
 

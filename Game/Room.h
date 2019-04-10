@@ -18,7 +18,7 @@ public:
 	void setRooms(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom);
 
 	Room* getRoom(std::string direction); //Returns a room in the requested direction
-
+	Boss getBoss(); //Returns the boss in the room
 	Rat* ratburn; //Boss object to hold Mr. Ratburn
 	Mortimer* mortimer; //Boss object to hold Mortimer Mouse
 	Skinner* skinner; //Boss object to hold Seymour Skinner
@@ -29,7 +29,7 @@ public:
 
 private:
 	// Boss (if any)
-
+	Boss boss;
 	// List of items
 	std::vector<std::string> items;
 	// Room description
