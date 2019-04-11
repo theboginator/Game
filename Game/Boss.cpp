@@ -17,7 +17,11 @@ void introduceBoss(Boss* boss) {
 }
 
 std::string getBossWinsResponse() {
+	return bossWinsResponse;
+}
 
+std::string getBossLosesResponse() {
+	return bossLosesResponse;
 }
 
 int Boss::fightBoss(Player player) { //Logic for fighting an enemy! Returns a damage amount (0 = win; 100 = death)

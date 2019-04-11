@@ -104,31 +104,48 @@ void Game::buildMap() {
 	
 }
 
+void Game::processCommand(std::string userInput) {
+
+}
+
 void Game::beginGame() {
-	Player currentPlayer = new Player();
+	Player currentPlayer; //Set up a player
 	while (userInput != "quit") {
+		if (currentRoom != nullptr) {
+			std::cout << currentRoom->getDescription() << std::endl; //Show the current room's description
+		}
 		if (currentRoom->containsBoss) { //If the player enters a room with a boss the boss fight happens first
 			int damage;
 			Boss currentBoss = currentRoom->getBoss();
 			currentBoss.introduceBoss; //Introduce the boss with his/her introduction
-			while (currentBoss.disabled != true && currentPlayer.checkHealth > 0) { //Until the user beats the boss
+			while (currentBoss.disabled != true && currentPlayer.checkHealth > 0) { //Until the user beats the boss or user dies
 				damage = currentBoss.fightBoss(currentPlayer); //Fight the boss, return the damage amount to player
-				currentPlayer.hit(damage);//update player damage
-				if (currentPlayer.checkHealth <= 0) {
+				currentPlayer.hit(damage); //update player damage
+				if (damage = 0) { //Player wins
+					std::cout << currentBoss.getBossLosesResponse();
+				}
+				else if (currentPlayer.checkHealth <= 0) {
 					std::cout << currentBoss.getBossWinsResponse();
 					endTheGame(false);
 				}
-				
 			}
-			
 		}
-		if (currentRoom != nullptr) {
-			std::cout << currentRoom->getDescription() << std::endl;
+		userInput = getUserCommand(); //Get input from the user
+		
+		if (userInput = direction) { //If the input is a direction
+			currentRoom = currentRoom->getRoom(userInput); //Attempt to move in the requested directions
 		}
-		userInput = Game::getUserCommand();
-		currentRoom = currentRoom->getRoom(userInput);
+		else if (userInput = command) { //If the user imput is a command
+			processCommand(userInput); //process search/eat/weedwhack/etc
+		}
+		else { //Prompt user again if command wasn't recognized.
+			std::cout << "That command wasn't recognized... try again.";
+			userInput = getUserCommand();
+		}
 
 	}
+
+	
 	/*
 	WHILE USERINPUT != QUIT
 		if currentRoom contains a boss & boss is enabled

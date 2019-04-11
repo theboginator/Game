@@ -11,7 +11,6 @@ int main() {
 	
 
 	Game theGame; //Create a new game
-	Player thePlayer; //Create a new player
 	theGame.buildMap(); //Build the game's map
 	theGame.beginGame(); //Start the game!
 	

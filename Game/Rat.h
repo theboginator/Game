@@ -6,5 +6,6 @@ class Rat : public Boss
 public:
 	Rat();
 	~Rat();
+	int fightBoss(Player* player);
 };
 

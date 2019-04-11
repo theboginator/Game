@@ -13,9 +13,11 @@ public:
 	void buildMap();
 	void beginGame();
 	void endTheGame(bool win); //End the game, true = win, false = lose
+	void processCommand(std::string command); //Handles a user command
 	std::vector<Room*> rooms; //the map of rooms in the game
 	std::vector<Boss*> bosses; //the array of bosses in the game
 	Room* currentRoom; //the room the player is currently in
+
 private:
 	std::string userInput = "";
 	void setupRooms();

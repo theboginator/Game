@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
+#includ <iostream>
+
 class Player
 {
 public:

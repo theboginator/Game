@@ -7,5 +7,6 @@ class Trashman : public Boss
 public:
 	Trashman();
 	~Trashman();
+	int fightBoss(Player* player);
 };
 
