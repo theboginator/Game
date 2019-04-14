@@ -10,6 +10,7 @@ Boss::Boss() {
 
 Boss::~Boss()
 {
+
 }
 
 void introduceBoss(Boss* boss) {

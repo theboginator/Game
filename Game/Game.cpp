@@ -48,6 +48,10 @@ void Game::setupRooms() {
 	rooms[4]->skinner = new Skinner();
 	rooms[6]->mortimer = new Mortimer();
 	rooms[9]->ratburn = new Rat();
+	std::vector<std::string> items = { "cake", "gas", "gas", "barbecue sauce" };//Items for the first chest
+	rooms[5]->chest = new Chest(items, true); //Load the chest in room 5
+	items = { "Lean Cuisine", "cake", "gas", "cake", "lighter fluid" };
+	rooms[9]->chest = new Chest(items, true); //Load the chest in room 9
 
 	for (int ctr = 0; ctr <= 10; ctr++) {
 		rooms[ctr]->setDescription(ctr);
