@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include "Mortimer.h"
+#include "Skinner.h"
+#include "Trashman.h"
+#include "Rat.h"
+
 
 class Boss
 {

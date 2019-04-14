@@ -2,10 +2,11 @@
 
 
 
-Room::Room(std::string description, bool containsBoss)
+Room::Room(std::string description, bool containsBoss, bool isLocked)
 {
 	this->description = description;
 	this->containsBoss = containsBoss;
+	this->isLocked = isLocked;
 }
 
 
@@ -81,4 +82,8 @@ Room* Room::getRoom(std::string direction) { //See if a room exists in the direc
 	else {
 		return this;
 	}
+}
+
+std::vector<std::string> Room::getItems() {
+	return items;
 }

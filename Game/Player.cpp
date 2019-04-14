@@ -22,8 +22,12 @@ void Player::eat() { //If inventory contains food, consume 1 food item each time
 void Player::hit(int damage) {//Used by a boss to damage the player
 	health = health - damage;
 }
-bool Player::inventoryContains(std::string check, int qty); //Check if inventory contains an item in at least the specified quantity
-int Player::checkqty(std::string item); //Check how much of an item the player has; if none returns 0; 
+bool Player::inventoryContains(std::string check, int qty) { //Check if inventory contains an item in at least the specified quantity
+	
+}
+int Player::checkqty(std::string item) { //Check how much of an item the player has; if none returns 0; 
+
+}
 void Player::addItem(std::string item) { //Add an item to inventory
 	inventory.push_back(item);
 }

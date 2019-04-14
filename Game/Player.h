@@ -26,6 +26,7 @@ public:
 	void heal(int hp); //heal the player
 	int checkHunger; //Returns hunger
 	void feed(int food); //increments hunger by specified amount
+	void setName(); //Set the name of the player
 	
 	
 private:

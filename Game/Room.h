@@ -1,15 +1,13 @@
 #pragma once
 #include "Boss.h"
-#include "Rat.h"
-#include "Mortimer.h"
-#include "Skinner.h"
-#include "Trashman.h"
 #include <string>
+#include <iostream>
+#include <algorithm>
 
 class Room
 {
 public:
-	Room(std::string description, bool containsBoss);
+	Room(std::string description, bool containsBoss, bool isLocked);
 	~Room();
 
 	std::string getDescription();
@@ -25,7 +23,9 @@ public:
 	Trashman* trashman; //Boss object to hold Danny DeVito
 
 	bool containsBoss; //Boolean to show if there is a boss in this room
+	bool isLocked; //Boolean to show if the room has a locked gate/door
 	int getNumber; //Returns the room number
+	std::vector<std::string> getItems(); //Returns the items in a room
 
 private:
 	// Boss (if any)

@@ -83,13 +83,16 @@ std::string Game::getUserCommand()
 void endTheGame(bool victory) {
 	if (victory) {
 		std::cout << "Congratulations, you successfully navigated the cursed forest! Enjoy your view of the aurora borealis!";
+		exit(0);
 	}
-	else
+	else {
 		std::cout << "You have died on the trail through the cursed forest.\n\nA. Dang it";
-	std::cout << "\n\n\n";
-	std::cout << "What do you want to do? ";
-	std::string answer;
-	std::getline(std::cin, answer);
+		std::cout << "\n\n\n";
+		std::cout << "What do you want to do? ";
+		std::string answer;
+		std::getline(std::cin, answer);
+		exit(0);
+	}
 	
 
 }
@@ -108,8 +111,15 @@ void Game::processCommand(std::string userInput) {
 
 }
 
+void Game::showLoot(std::vector<std::string> tempItems) {
+	std::cout << "You have found.... ";
+	for (int ctr = 0; ctr <= tempItems.size; ctr++) {
+		std::cout << tempItems[ctr];
+	}
+}
+
 void Game::beginGame() {
-	Player currentPlayer; //Set up a player
+	currentPlayer.setName();
 	while (userInput != "quit") {
 		if (currentRoom != nullptr) {
 			std::cout << currentRoom->getDescription() << std::endl; //Show the current room's description
@@ -123,20 +133,52 @@ void Game::beginGame() {
 				currentPlayer.hit(damage); //update player damage
 				if (damage = 0) { //Player wins
 					std::cout << currentBoss.getBossLosesResponse();
+					currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+					rooms[currentRoom->getNumber]->containsBoss = false; //Remove the enabled flag from room map
 				}
 				else if (currentPlayer.checkHealth <= 0) {
 					std::cout << currentBoss.getBossWinsResponse();
 					endTheGame(false);
+				}
+				else {
+					std::cout << currentBoss.fightContinuesResponse;
 				}
 			}
 		}
 		userInput = getUserCommand(); //Get input from the user
 		
 		if (userInput = direction) { //If the input is a direction
-			currentRoom = currentRoom->getRoom(userInput); //Attempt to move in the requested directions
+			Room* tempRoom = currentRoom->getRoom(userInput); //Attempt to load in a room in the requested directions
+			if(tempRoom->isLocked == true){ //If the next room is locked
+				std::cout << "You can't move in that direction, the door is locked.";
+			}
+			else {
+				currentRoom = tempRoom;
+			}
+			
 		}
 		else if (userInput = command) { //If the user imput is a command
 			processCommand(userInput); //process search/eat/weedwhack/etc
+			if (userInput == "search") {
+				std::vector<std::string> tempItems = currentRoom->getItems();
+				showLoot(tempItems);
+				for (int ctr = 0; ctr <= tempItems.size; ctr++) {
+					currentPlayer.addItem(tempItems[ctr]);
+				}
+			}
+			else if (userInput == "unlock") {
+				if currentRoom.isLocked{ //If the room is locked
+					if currentPlayer.inventoryContains("key", 1) { //And if the player has a key
+						currentRoom.isLocked = false; //Unlock the room
+						currentPlayer.removeItem("key", 1);
+						std::cout << "You unlocked the gate!";
+					}
+					else {
+						std::cout << "You don't have anything to unlock the gate with.";
+					}
+
+				}
+			}
 		}
 		else { //Prompt user again if command wasn't recognized.
 			std::cout << "That command wasn't recognized... try again.";
