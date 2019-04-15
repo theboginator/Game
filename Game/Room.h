@@ -23,13 +23,15 @@ public:
 	Mortimer* mortimer; //Boss object to hold Mortimer Mouse
 	Skinner* skinner; //Boss object to hold Seymour Skinner
 	Trashman* trashman; //Boss object to hold Danny DeVito
-	Chest* chest; //Chest object for the room
+	Chest chest; //Chest object for the room
 
 	bool containsBoss; //Boolean to show if there is a boss in this room
 	bool containsChest; //Boolean to show if the room contains a chest
 	bool isLocked; //Boolean to show if the room has a locked gate/door
 	int getNumber; //Returns the room number
 	std::vector<std::string> getItems(); //Returns the items in a room
+	std::vector<std::string> returnChestItems(); //Returns the items in the room's chest
+	Chest getChest();
 
 private:
 	// Boss (if any)

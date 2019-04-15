@@ -6,7 +6,6 @@ Room::Room(std::string description, bool containsBoss)
 {
 	this->description = description;
 	this->containsBoss = containsBoss;
-	this->isLocked = isLocked;
 }
 
 
@@ -15,7 +14,16 @@ Room::~Room()
 }
 
 void Room::configureChest(std::vector<std::string> items) {
-	chest->setChest(items, true);
+	chest.setChest(items, true);
+}
+
+Chest Room::getChest() {
+	return chest;
+}
+
+std::vector<std::string> Room::returnChestItems() {
+	std::vector<std::string> stuff = chest.returnItems();
+	return stuff;
 }
 
 std::string Room::getDescription() {

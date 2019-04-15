@@ -38,7 +38,7 @@ int Skinner::fightBoss(Player* player) {
 			return 0;
 		}
 		else {
-			std::cout << "'Don't try to kid with me!' Yells Skinner. He clearly sees you don't have any coins. Skinner drags you into his cottage and stuffs you into the oven!\n'You'll make an excellent roast for the Superintendent when he comes along!'";
+			std::cout << "'Don't try to kid with me!' Yells Skinner. He clearly sees you don't have any coins. Skinner drags you into his cottage and stuffs you into the oven!\n'You'll make an excellent roast for the Superintendent when he comes along! Delightfully devilish, Seymour!'";
 			std::cout << "You are KILLED!";
 			return 100;
 		}

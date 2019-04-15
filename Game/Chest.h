@@ -11,7 +11,7 @@ public:
 	~Chest();
 	bool locked;
 	void setChest(std::vector<std::string> items, bool locked); //function to configure chest
-	std::vector<std::string> attemptUnlock();
+	std::vector<std::string> returnItems();
 
 private:
 	std::vector<std::string> items;

@@ -13,15 +13,16 @@ Boss::~Boss()
 
 }
 
-void introduceBoss(Boss* boss) {
-	std::cout << boss->challenge;
+
+void Boss::introduceBoss() {
+	std::cout << intro;
 }
 
-std::string getBossWinsResponse() {
+std::string Boss::getBossWinsResponse() {
 	return bossWinsResponse;
 }
 
-std::string getBossLosesResponse() {
+std::string Boss::getBossLosesResponse() {
 	return bossLosesResponse;
 }
 

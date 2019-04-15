@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
-#includ <iostream>
+#include <iostream>
 
 class Player
 {
@@ -11,7 +11,6 @@ public:
 	~Player();
 	
 	std::string name;
-	std::vector<std::string> inventory;
 	
 	void eat(); //If inventory contains food, consume 1 food item each time the function is called
 	void hit(int damage); //Used by a boss to damage the player

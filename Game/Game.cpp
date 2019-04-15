@@ -49,9 +49,9 @@ void Game::setupRooms() {
 	rooms[6]->mortimer = new Mortimer();
 	rooms[9]->ratburn = new Rat();
 	std::vector<std::string> items = { "cake", "gas", "gas", "barbecue sauce" };//Items for the first chest
-	rooms[5]->chest = new Chest(items, true); //Load the chest in room 5
+	rooms[5]->chest.setChest(items, true);; //Load the chest in room 5
 	items = { "Lean Cuisine", "cake", "gas", "cake", "lighter fluid" };
-	rooms[9]->chest = new Chest(items, true); //Load the chest in room 9
+	rooms[9]->chest.setChest(items, true); //Load the chest in room 9
 
 	for (int ctr = 0; ctr <= 10; ctr++) {
 		rooms[ctr]->setDescription(ctr);
@@ -117,7 +117,8 @@ void Game::processCommand(std::string userInput) {
 
 void Game::showLoot(std::vector<std::string> tempItems) {
 	std::cout << "You have found.... ";
-	for (int ctr = 0; ctr <= tempItems.size; ctr++) {
+	int size = static_cast<int>(tempItems.size());
+	for (int ctr = 0; ctr <= size; ctr++) {
 		std::cout << tempItems[ctr];
 	}
 }
@@ -151,37 +152,37 @@ void Game::beginGame() {
 		}
 		userInput = getUserCommand(); //Get input from the user
 		
-		if (userInput = direction) { //If the input is a direction
-			Room* tempRoom = currentRoom->getRoom(userInput); //Attempt to load in a room in the requested directions
-			if(tempRoom->isLocked == true){ //If the next room is locked
-				std::cout << "You can't move in that direction, the door is locked.";
-			}
-			else {
-				currentRoom = tempRoom;
-			}
-			
+		if (userInput == "north" || userInput == "south" || userInput == "east" || userInput == "west") { //If the input is a direction
+			Room* tempRoom = currentRoom->getRoom(userInput); //Attempt to load in a room in the requested direction
+			currentRoom = tempRoom; //Make the current room the new room
 		}
-		else if (userInput = command) { //If the user imput is a command
-			processCommand(userInput); //process search/eat/weedwhack/etc
-			if (userInput == "search") {
-				std::vector<std::string> tempItems = currentRoom->getItems();
-				showLoot(tempItems);
-				for (int ctr = 0; ctr <= tempItems.size; ctr++) {
-					currentPlayer.addItem(tempItems[ctr]);
-				}
-			}
-			else if (userInput == "unlock") {
-				if currentRoom.isLocked{ //If the room is locked
-					if currentPlayer.inventoryContains("key", 1) { //And if the player has a key
-						currentRoom.isLocked = false; //Unlock the room
-						currentPlayer.removeItem("key", 1);
-						std::cout << "You unlocked the gate!";
-					}
-					else {
-						std::cout << "You don't have anything to unlock the gate with.";
-					}
 
+		else if (userInput == "search") {
+			std::vector<std::string> tempItems = currentRoom->getItems();
+			showLoot(tempItems);
+			int size = static_cast<int>(tempItems.size());
+			for (int ctr = 0; ctr <= size; ctr++) {
+				currentPlayer.addItem(tempItems[ctr]);
+			}
+		}
+		else if (userInput == "unlock") {
+			if(currentRoom->containsChest){ //If the room contains a chest
+				if(currentPlayer.inventoryContains("key", 1)) { //And if the player has a key
+					currentPlayer.removeItem("key", 1); //Remove the key from inventory
+					std::cout << "You unlocked the chest! You gained: ";
+					Chest currentChest = currentRoom->getChest();; //Load the chest into temporary object
+					std::vector<std::string> tempItems = currentRoom->returnChestItems(); //Get the items from the chest
+					int size = static_cast<int>(tempItems.size());
+					for (int ctr = 0; ctr <= size; ctr++) {
+						currentPlayer.addItem(tempItems[ctr]); //Load each item in the chest into the player's inventory
+						std::cout << tempItems[ctr]; //Print it to the screen
+					}
+					currentRoom->containsChest = false; //Deactivate the chest
 				}
+				else {
+					std::cout << "You don't have anything to unlock the chest with.";
+				}
+
 			}
 		}
 		else { //Prompt user again if command wasn't recognized.
