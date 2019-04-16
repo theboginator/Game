@@ -27,7 +27,7 @@ std::string Boss::getBossLosesResponse() {
 }
 
 int Boss::fightBoss(Player player) { //Logic for fighting an enemy! Returns a damage amount (0 = win; 100 = death)
-
+	return 0;
 }
 
 void Boss::configureBosses(std::string name, std::string playerName) { //Set up the bosses and their challenges!

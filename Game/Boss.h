@@ -4,25 +4,20 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include "Mortimer.h"
-#include "Skinner.h"
-#include "Trashman.h"
-#include "Rat.h"
-
 
 class Boss
 {
 public:
 	Boss();
 	~Boss();
-	static std::string name; //Name of the boss
-	static std::string intro; //Boss's intro line
-	static std::string challenge; //The Boss's challenge to the player
-	static std::string fightOptions; //The list of fight options to be used against the boss
+	std::string name; //Name of the boss
+	std::string intro; //Boss's intro line
+	std::string challenge; //The Boss's challenge to the player
+	std::string fightOptions; //The list of fight options to be used against the boss
 	void introduceBoss(); //Print the boss introduction
 	std::string bossWinsResponse; //The boss's response to the player's move if the boss wins
 	std::string bossLosesResponse; //The boss's response to the player if the boss loses
-	static std::string fightContinuesResponse; //The boss's response if the fight continues
+	std::string fightContinuesResponse; //The boss's response if the fight continues
 	int damageCapacity; //How much damage boss can take 
 	int roomNumber;
 	bool disabled;

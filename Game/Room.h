@@ -1,9 +1,13 @@
 #pragma once
-#include "Boss.h"
-#include "Chest.h"
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include "Boss.h"
+#include "Mortimer.h"
+#include "Rat.h"
+#include "Skinner.h"
+#include "Trashman.h"
+#include "Chest.h"
 
 class Room
 {
@@ -16,6 +20,7 @@ public:
 	void setDescription(int roomNum);
 	void setRooms(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom);
 	void configureChest(std::vector<std::string> items);
+	void setItems(std::vector<std::string> newitems);
 
 	Room* getRoom(std::string direction); //Returns a room in the requested direction
 	Boss getBoss(); //Returns the boss in the room

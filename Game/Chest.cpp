@@ -2,10 +2,10 @@
 
 
 
-Chest::Chest(std::vector<std::string> loot, bool isLocked)
+Chest::Chest()
 {
-	items = loot;
-	locked = isLocked;
+	items = { "gas", "cake", "hockey_stick", "bat", "barbecue sauce" };
+	locked = true;
 }
 
 std::vector<std::string> Chest::returnItems() {
@@ -21,4 +21,5 @@ void Chest::setChest(std::vector<std::string> loot, bool isLocked)
 
 Chest::~Chest()
 {
+	
 }

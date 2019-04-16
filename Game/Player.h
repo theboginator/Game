@@ -19,8 +19,8 @@ public:
 	void addItem(std::string item); //Add an item to inventory
 	void removeItem(std::string item, int qty); //Remove a specific amount of an item from inventory
 	void useItem(std::string item); //Use an item in the inventory; print
-	std::string showInventory(); //Function to show inventory
-	int checkHealth; //Returns health/
+	void showInventory(); //Function to show inventory
+	int checkHealth();
 	void hurt(int damage); // damage the player
 	void heal(int hp); //heal the player
 	int checkHunger; //Returns hunger

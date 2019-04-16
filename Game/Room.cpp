@@ -78,17 +78,20 @@ void Room::setDescription(int roomNum) { //Set each room's description!
 	}
 }	
 
+void Room::setItems(std::vector<std::string> tempItems) {
+	items = tempItems;
+}
 Room* Room::getRoom(std::string direction) { //See if a room exists in the direction the user wants to go
-	if (direction == "North" && this->northRoom != nullptr) {
+	if (direction == "north" && this->northRoom != nullptr) {
 		return this->northRoom;
 	}
-	else if (direction == "East" && this->eastRoom != nullptr) {
+	else if (direction == "east" && this->eastRoom != nullptr) {
 		return this->eastRoom;
 	}
-	else if (direction == "South" && this->southRoom != nullptr) {
+	else if (direction == "south" && this->southRoom != nullptr) {
 		return this->southRoom;
 	}
-	else if (direction == "West" && this->westRoom != nullptr) {
+	else if (direction == "west" && this->westRoom != nullptr) {
 		return this->westRoom;
 	}
 	else {
