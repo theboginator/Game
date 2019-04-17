@@ -50,7 +50,7 @@ int Mortimer::fightBoss(Player player) {
 		else {
 			std::cout << "Mortimer is not fooled, he can see you have no way to realistically burn the bridge down.";
 			std::cout << "'Threaten to burn my bridge, eh? I bet you scream just like Goofy when I throw you over the edge!'\nMortimer pushes you off the edge!";
-			std::cout << "You are KILLED!";
+			std::cout << "\nYou are KILLED!";
 			return 100;
 		}
 	}
