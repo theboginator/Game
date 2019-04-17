@@ -59,10 +59,10 @@ void Room::setDescription(int roomNum) { //Set each room's description!
 		this->description = "There's a cute little cottage sitting at the edge of the trail here. Principal Skinner is probably hiding out inside.";
 	}
 	else if (roomNum == 5) {
-		this->description = "You've run into a large wall running right through the woods. Supposedly, the most dangerous parts of the forest are behind it. There's a door blocking the trail, maybe it can be unlocked...";
+		this->description = "You've run into a large wall running right through the woods. Supposedly, the most dangerous parts of the forest are behind it. There's a chest along the trail, maybe it can be unlocked...";
 	}
 	else if (roomNum == 6) {
-		this->description = "There's a very deep ravine blocking the trail... Good thing the bridge isn't out!";
+		this->description = "There's a very deep ravine blocking the trail... Good thing the bridge isn't out. Yet.";
 	}
 	else if (roomNum == 7) {
 		this->description = "The trail follows the other side of the ravine and there's lots of loose shale and brush. Sometimes hidden things turn up under these...";
@@ -74,7 +74,10 @@ void Room::setDescription(int roomNum) { //Set each room's description!
 		this->description = "The forest is clearing and the observation tower is in sight! But something smells suspiciously like a rat...";
 	}
 	else if (roomNum == 10) {
-		this->description = "The gate to the observation deck is locked. But that won't discourage you!";
+		this->description = "Someone's got the grill running! You can easily smell the barbecue, and the observatory is almost in sight!";
+	}
+	else if (roomNum == 11) {
+		this->description = "Congratulations! You made it to the observatory! Enjoy your view of the aurora borealis.";
 	}
 }	
 
@@ -97,6 +100,26 @@ Room* Room::getRoom(std::string direction) { //See if a room exists in the direc
 	else {
 		return this;
 	}
+}
+
+Rat* Room::getRat() {
+	return ratburn;
+}
+
+Skinner* Room::getSkinner() {
+	return skinner;
+}
+
+Mortimer* Room::getMortimer() {
+	return mortimer;
+}
+
+Trashman* Room::getTrashman() {
+	return trashman;
+}
+
+Fieri* Room::getFieri() {
+	return fieri;
 }
 
 std::vector<std::string> Room::getItems() {

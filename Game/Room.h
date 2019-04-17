@@ -7,6 +7,7 @@
 #include "Rat.h"
 #include "Skinner.h"
 #include "Trashman.h"
+#include "Fieri.h"
 #include "Chest.h"
 
 class Room
@@ -28,6 +29,14 @@ public:
 	Mortimer* mortimer; //Boss object to hold Mortimer Mouse
 	Skinner* skinner; //Boss object to hold Seymour Skinner
 	Trashman* trashman; //Boss object to hold Danny DeVito
+	Fieri* fieri; //Boss object to hold Guy Fieri the final boss!!!!
+
+	Rat* getRat();
+	Trashman* getTrashman();
+	Skinner* getSkinner();
+	Mortimer* getMortimer();
+	Fieri* getFieri();
+
 	Chest chest; //Chest object for the room
 
 	bool containsBoss; //Boolean to show if there is a boss in this room

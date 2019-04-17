@@ -21,6 +21,7 @@ void Player::setName() {
 void Player::eat() { //If inventory contains food, consume 1 food item each time the function is called
 	if (std::find( inventory.begin(), inventory.end(), "cake") != inventory.end()){
 		removeItem("cake", 1);
+		heal(20);
 	}
 	else {
 		std::cout << "You have no food in your inventory to consume!";
@@ -75,5 +76,11 @@ int Player::checkHealth() {
 void Player::hurt(int damage){
 	health = health - damage;
 }// damage the player
-void heal(int hp); //heal the player
-int checkHunger; //Returns hunger
+void Player::heal(int hp) {
+	if (health + hp < 100) {
+		std::cout << "\nYour health is already maxed.\n";
+	}
+	else {
+		health = health + hp;
+	}
+}//heal the player
