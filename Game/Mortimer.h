@@ -6,6 +6,6 @@ class Mortimer : public Boss
 public:
 	Mortimer();
 	~Mortimer();
-	int fightBoss(Player* player);
+	int fightBoss(Player player);
 };
 

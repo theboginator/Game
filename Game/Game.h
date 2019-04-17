@@ -15,6 +15,8 @@ public:
 	void endTheGame(bool win); //End the game, true = win, false = lose
 	void processCommand(std::string command); //Handles a user command
 	void showLoot(std::vector<std::string> tempItems); //Prints all the items a player just acquired via search function
+	void battleBoss(Room* currentRoom); //Handles all boss battles
+
 	std::vector<Room*> rooms; //the map of rooms in the game
 	std::vector<Boss*> bosses; //the array of bosses in the game
 	Room* currentRoom; //the room the player is currently in

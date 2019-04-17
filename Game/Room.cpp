@@ -2,10 +2,11 @@
 
 
 
-Room::Room(std::string description, bool containsBoss)
+Room::Room(std::string description, int roomNumber, bool containsBoss)
 {
 	this->description = description;
 	this->containsBoss = containsBoss;
+	this->roomNumber = roomNumber;
 }
 
 
@@ -102,23 +103,27 @@ Room* Room::getRoom(std::string direction) { //See if a room exists in the direc
 	}
 }
 
-Rat* Room::getRat() {
+int Room::getNumber() {
+	return roomNumber;
+}
+
+Rat Room::getRat() {
 	return ratburn;
 }
 
-Skinner* Room::getSkinner() {
+Skinner Room::getSkinner() {
 	return skinner;
 }
 
-Mortimer* Room::getMortimer() {
+Mortimer Room::getMortimer() {
 	return mortimer;
 }
 
-Trashman* Room::getTrashman() {
+Trashman Room::getTrashman() {
 	return trashman;
 }
 
-Fieri* Room::getFieri() {
+Fieri Room::getFieri() {
 	return fieri;
 }
 

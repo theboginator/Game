@@ -32,18 +32,18 @@ void Game::setupRooms() {
 	Build the array of rooms, and set the "has boss" parameter
 	*/
 
-	rooms.push_back(new Room("Room 0", false));
-	rooms.push_back(new Room("Room 1", false));
-	rooms.push_back(new Room("Room 2", false));
-	rooms.push_back(new Room("Room 3", true));
-	rooms.push_back(new Room("Room 4", true));
-	rooms.push_back(new Room("Room 5", false));
-	rooms.push_back(new Room("Room 6", true));
-	rooms.push_back(new Room("Room 7", false));
-	rooms.push_back(new Room("Room 8", false));
-	rooms.push_back(new Room("Room 9", true));
-	rooms.push_back(new Room("Room 10", true));
-	rooms.push_back(new Room("Room 11", false));
+	rooms.push_back(new Room("Room 0", 0, false));
+	rooms.push_back(new Room("Room 1", 1, false));
+	rooms.push_back(new Room("Room 2", 2, false));
+	rooms.push_back(new Room("Room 3", 3, true));
+	rooms.push_back(new Room("Room 4", 4, true));
+	rooms.push_back(new Room("Room 5", 5, false));
+	rooms.push_back(new Room("Room 6", 6, true));
+	rooms.push_back(new Room("Room 7", 7, false));
+	rooms.push_back(new Room("Room 8", 8, false));
+	rooms.push_back(new Room("Room 9", 9, true));
+	rooms.push_back(new Room("Room 10", 10, true));
+	rooms.push_back(new Room("Room 11", 11, false));
 
 	//Set items to be found in each room:
 	rooms[0]->setItems({"cake", "gas", "hockey stick"});
@@ -59,17 +59,18 @@ void Game::setupRooms() {
 	rooms[10]->setItems({"matches", "grill"});
 
 
-	rooms[3]->trashman = new Trashman();
-	rooms[4]->skinner = new Skinner();
-	rooms[6]->mortimer = new Mortimer();
-	rooms[9]->ratburn = new Rat();
-	rooms[10]->fieri = new Fieri();
+	rooms[3]->trashman = Trashman();
+	rooms[4]->skinner = Skinner();
+	rooms[6]->mortimer = Mortimer();
+	rooms[9]->ratburn = Rat();
+	rooms[10]->fieri = Fieri();
 
 	std::vector<std::string> items = { "cake", "gas", "gas", "barbecue sauce" };//Items for the first chest
 	rooms[5]->chest.setChest(items, true);; //Load the chest in room 5
+	rooms[5]->containsChest = true;
 	items = { "Lean Cuisine", "cake", "gas", "cake", "lighter fluid" };
 	rooms[9]->chest.setChest(items, true); //Load the chest in room 9
-
+	rooms[9]->containsChest = true;
 	for (int ctr = 0; ctr <= 10; ctr++) {
 		rooms[ctr]->setDescription(ctr);
 	}
@@ -109,7 +110,7 @@ void Game::endTheGame(bool victory) {
 		exit(0);
 	}
 	else {
-		std::cout << "You have DIED on the trail through the cursed forest.\n\nA. Dang it";
+		std::cout << "\n\n\nYou have DIED on the trail through the cursed forest.\n\nA. Dang it";
 		std::cout << "\n\n\n";
 		std::cout << "What do you want to do? ";
 		std::string answer;
@@ -143,6 +144,111 @@ void Game::showLoot(std::vector<std::string> tempItems) {
 	std::cout << "\ndone printing\n";
 }
 
+void Game::battleBoss(Room* currentRoom) {
+	int damage;
+	if (currentRoom->getNumber() == 3) {
+		Trashman currentBoss = currentRoom->getTrashman();
+		currentBoss.introduceBoss(); //Introduce the boss with his/her introduction
+		while (currentBoss.disabled != true && currentPlayer.checkHealth() > 0) { //Until the user beats the boss or user dies
+			damage = currentBoss.fightBoss(currentPlayer); //Fight the boss, return the damage amount to player
+			currentPlayer.hit(damage); //update player damage
+			if (damage = 0) { //Player winssz
+				std::cout << currentBoss.getBossLosesResponse();
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
+			}
+			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
+				std::cout << currentBoss.getBossWinsResponse();
+				endTheGame(false);
+			}
+			else {
+				std::cout << currentBoss.fightContinuesResponse;
+			}
+		}
+
+	}
+	else if (currentRoom->getNumber() == 4) {
+		Skinner currentBoss = currentRoom->getSkinner();
+		currentBoss.introduceBoss(); //Introduce the boss with his/her introduction
+		while (currentBoss.disabled != true && currentPlayer.checkHealth() > 0) { //Until the user beats the boss or user dies
+			damage = currentBoss.fightBoss(currentPlayer); //Fight the boss, return the damage amount to player
+			currentPlayer.hit(damage); //update player damage
+			if (damage = 0) { //Player winssz
+				std::cout << currentBoss.getBossLosesResponse();
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
+			}
+			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
+				std::cout << currentBoss.getBossWinsResponse();
+				endTheGame(false);
+			}
+			else {
+				std::cout << currentBoss.fightContinuesResponse;
+			}
+		}
+	}
+	else if (currentRoom->getNumber() == 6) {
+		Mortimer currentBoss = currentRoom->getMortimer();
+		currentBoss.introduceBoss(); //Introduce the boss with his/her introduction
+		while (currentBoss.disabled != true && currentPlayer.checkHealth() > 0) { //Until the user beats the boss or user dies
+			damage = currentBoss.fightBoss(currentPlayer); //Fight the boss, return the damage amount to player
+			currentPlayer.hit(damage); //update player damage
+			if (damage = 0) { //Player winssz
+				std::cout << currentBoss.getBossLosesResponse();
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
+			}
+			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
+				std::cout << currentBoss.getBossWinsResponse();
+				endTheGame(false);
+			}
+			else {
+				std::cout << currentBoss.fightContinuesResponse;
+			}
+		}
+	}
+	else if (currentRoom->getNumber() == 9) {
+		Rat currentBoss = currentRoom->getRat();
+		currentBoss.introduceBoss(); //Introduce the boss with his/her introduction
+		while (currentBoss.disabled != true && currentPlayer.checkHealth() > 0) { //Until the user beats the boss or user dies
+			damage = currentBoss.fightBoss(currentPlayer); //Fight the boss, return the damage amount to player
+			currentPlayer.hit(damage); //update player damage
+			if (damage = 0) { //Player winssz
+				std::cout << currentBoss.getBossLosesResponse();
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
+			}
+			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
+				std::cout << currentBoss.getBossWinsResponse();
+				endTheGame(false);
+			}
+			else {
+				std::cout << currentBoss.fightContinuesResponse;
+			}
+		}
+	}
+	else if (currentRoom->getNumber() == 10) {
+		Fieri currentBoss = currentRoom->getFieri();
+		currentBoss.introduceBoss(); //Introduce the boss with his/her introduction
+		while (currentBoss.disabled != true && currentPlayer.checkHealth() > 0) { //Until the user beats the boss or user dies
+			damage = currentBoss.fightBoss(currentPlayer); //Fight the boss, return the damage amount to player
+			currentPlayer.hit(damage); //update player damage
+			if (damage = 0) { //Player winssz
+				std::cout << currentBoss.getBossLosesResponse();
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
+			}
+			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
+				std::cout << currentBoss.getBossWinsResponse();
+				endTheGame(false);
+			}
+			else {
+				std::cout << currentBoss.fightContinuesResponse;
+			}
+		}
+	}
+}
+
 void Game::beginGame() {
 	currentPlayer.setName();
 	while (userInput != "quit") {
@@ -150,43 +256,9 @@ void Game::beginGame() {
 			std::cout << currentRoom->getDescription() << std::endl; //Show the current room's description
 		}
 		if (currentRoom->containsBoss) { //If the player enters a room with a boss the boss fight happens first
-			battle(currentRoom, 
-			int damage;
-			if (currentRoom->getNumber == 3) {
-				Trashman* boss = currentRoom->getTrashman;
-				boss->introduceBoss();
+			std::cout << "There's a boss in the current room\n";
+			battleBoss(currentRoom);
 
-			}
-			else if (currentRoom->getNumber == 4){
-				Skinner* boss = currentRoom->getSkinner;
-
-			}
-			else if (currentRoom->getNumber == 6){
-				Mortimer* boss = currentRoom->getMortimer();
-			}
-			else if (currentRoom->getNumber == 9) {
-				Rat* boss = currentRoom->getRat();
-			}
-			else if (currentRoom->getNumber == 10) {
-				Fieri* boss = currentRoom->getFieri();
-			}
-			boss->introduceBoss(); //Introduce the boss with his/her introduction
-			while (currentBoss.disabled != true && currentPlayer.checkHealth() > 0) { //Until the user beats the boss or user dies
-				damage = currentBoss.fightBoss(currentPlayer); //Fight the boss, return the damage amount to player
-				currentPlayer.hit(damage); //update player damage
-				if (damage = 0) { //Player winssz
-					std::cout << currentBoss.getBossLosesResponse();
-					currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
-					rooms[currentRoom->getNumber]->containsBoss = false; //Remove the enabled flag from room map
-				}
-				else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
-					std::cout << currentBoss.getBossWinsResponse();
-					endTheGame(false);
-				}
-				else {
-					std::cout << currentBoss.fightContinuesResponse;
-				}
-			}
 		}
 		userInput = getUserCommand(); //Get input from the user
 		
@@ -236,7 +308,7 @@ void Game::beginGame() {
 			int health = currentPlayer.checkHealth();
 		}
 		else if (userInput == "showroom") {
-			std::cout << "\nYou are in room " << currentRoom->getNumber << "\n";
+			std::cout << "\nYou are in room " << currentRoom->getNumber() << "\n";
 		}
 		else if (userInput == "hacksetroom") {
 			std::cout << "\nWhich room would you like to go to? ";
@@ -244,7 +316,7 @@ void Game::beginGame() {
 			std::cin >> hacknum;
 			std::cout << "\nAttempting move...";
 			currentRoom = rooms[hacknum];
-			std::cout << "\n\mSuccessfully moved!\n";
+			std::cout << "\n\nSuccessfully moved!\n";
 		}
 		else if (userInput == "quit") {
 			endTheGame(false);

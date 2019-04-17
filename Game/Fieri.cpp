@@ -15,7 +15,7 @@ Fieri::~Fieri()
 {
 }
 
-int Fieri::fightBoss(Player* player) {
+int Fieri::fightBoss(Player player) {
 	std::cout << Fieri::fightOptions;
 	std::string response = "";
 	std::getline(std::cin, response);
@@ -28,8 +28,8 @@ int Fieri::fightBoss(Player* player) {
 	}
 	else if (response == "b") {
 		std::cout << "You attempt to try your hand at barbecuing for Guy Fieri";
-		if (player->inventoryContains("steamed hams", 1)){
-			if (player->inventoryContains("barbecue sauce", 1)) {
+		if (player.inventoryContains("steamed hams", 1)){
+			if (player.inventoryContains("barbecue sauce", 1)) {
 				std::cout << "You throw the steamed hams Skinner gave you onto the grill and cover them in barbecue sauce\n";
 				std::cout << "Guy Fieri is IMPRESSED!\n";
 
@@ -48,7 +48,7 @@ int Fieri::fightBoss(Player* player) {
 	}
 	else if (response == "c") {
 		std::cout << "You threaten to burn down the bridge!";
-		if (player->inventoryContains("gas", 2)) {
+		if (player.inventoryContains("gas", 2)) {
 			disabled = true;
 			return 0;
 		}

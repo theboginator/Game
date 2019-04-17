@@ -16,6 +16,7 @@ void Player::setName() {
 	std::string pname;
 	std::getline(std::cin, pname);
 	name = pname;
+	health = 100;
 }
 
 void Player::eat() { //If inventory contains food, consume 1 food item each time the function is called
@@ -33,7 +34,7 @@ void Player::hit(int damage) {//Used by a boss to damage the player
 bool Player::inventoryContains(std::string check, int qty) { //Check if inventory contains an item in at least the specified quantity
 	int tempqty = 0;
 	int size = static_cast<int>(inventory.size());
-	for (int ctr = 1; ctr <= size; ctr++) {
+	for (int ctr = 0; ctr < size; ctr++) {
 		if (inventory[ctr] == check) {
 			tempqty++;
 		}
@@ -48,7 +49,7 @@ bool Player::inventoryContains(std::string check, int qty) { //Check if inventor
 int Player::checkqty(std::string item) { //Check how much of an item the player has; if none returns 0; 
 	int tempqty = 0;
 	int size = static_cast<int>(inventory.size());
-	for (int ctr = 1; ctr <= size; ctr++) {
+	for (int ctr = 0; ctr < size; ctr++) {
 		if (inventory[ctr] == item) {
 			tempqty++;
 		}
