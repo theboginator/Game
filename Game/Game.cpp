@@ -57,6 +57,7 @@ void Game::setupRooms() {
 	rooms[8]->setItems({"Special Sauce", "lighter fluid", "charcoal"});
 	rooms[9]->setItems({"textbook", "cookbook"});
 	rooms[10]->setItems({"matches", "grill"});
+	rooms[11]->setItems({ "cake", "telescope" });
 
 
 	rooms[3]->trashman = Trashman();
@@ -71,7 +72,7 @@ void Game::setupRooms() {
 	items = { "Lean Cuisine", "cake", "gas", "cake", "lighter fluid" };
 	rooms[8]->chest.setChest(items, true); //Load the chest in room 9
 	rooms[8]->containsChest = true;
-	for (int ctr = 0; ctr <= 10; ctr++) {
+	for (int ctr = 0; ctr <= 11; ctr++) {
 		rooms[ctr]->setDescription(ctr);
 	}
 
@@ -88,7 +89,8 @@ void Game::setupRooms() {
 	rooms[7]->setRooms(rooms[6], nullptr, nullptr, rooms[8]);
 	rooms[8]->setRooms(nullptr, rooms[7], nullptr, rooms[9]);
 	rooms[9]->setRooms(nullptr, rooms[8], rooms[10], nullptr);
-	rooms[10]->setRooms(rooms[9], nullptr, nullptr, nullptr);
+	rooms[10]->setRooms(rooms[9], nullptr, rooms[11], nullptr);
+	rooms[11]->setRooms(rooms[10], nullptr, nullptr, nullptr);
 
 	currentRoom = rooms[0];
 }
@@ -115,7 +117,10 @@ void Game::endTheGame(bool victory) {
 		std::cout << "What do you want to do? ";
 		std::string answer;
 		std::getline(std::cin, answer);
-		exit(0);
+		if (answer != "forcecontinue") {
+			exit(0);
+		}
+		currentPlayer.setHealth(100);
 	}
 	
 
@@ -160,6 +165,8 @@ void Game::battleBoss(Room* currentRoom) {
 			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
 				std::cout << currentBoss.getBossWinsResponse();
 				endTheGame(false);
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
 			}
 			else {
 				std::cout << currentBoss.fightContinuesResponse;
@@ -183,6 +190,8 @@ void Game::battleBoss(Room* currentRoom) {
 			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
 				std::cout << currentBoss.getBossWinsResponse();
 				endTheGame(false);
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
 			}
 			else {
 				std::cout << currentBoss.fightContinuesResponse;
@@ -204,6 +213,8 @@ void Game::battleBoss(Room* currentRoom) {
 			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
 				std::cout << currentBoss.getBossWinsResponse();
 				endTheGame(false);
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
 			}
 			else {
 				std::cout << currentBoss.fightContinuesResponse;
@@ -224,6 +235,8 @@ void Game::battleBoss(Room* currentRoom) {
 			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
 				std::cout << currentBoss.getBossWinsResponse();
 				endTheGame(false);
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
 			}
 			else {
 				std::cout << currentBoss.fightContinuesResponse;
@@ -244,6 +257,8 @@ void Game::battleBoss(Room* currentRoom) {
 			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
 				std::cout << currentBoss.getBossWinsResponse();
 				endTheGame(false);
+				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
 			}
 			else {
 				std::cout << currentBoss.fightContinuesResponse;
@@ -327,6 +342,16 @@ void Game::beginGame() {
 		}
 		else if (userInput == "quit") {
 			endTheGame(false);
+		}
+		else if (userInput == "eat") {
+			if (currentPlayer.inventoryContains("cake", 1)) {
+				std::cout << "\nYou eat a slice of cake! +20 health!\n";
+				currentPlayer.removeItem("cake", 1);
+				currentPlayer.heal(20);
+			}
+			else {
+				std::cout << "\nYou have no cake in your inventory\n";
+			}
 		}
 		else if (userInput == "weedwhack") {
 			if (currentRoom->getNumber() == 1) {

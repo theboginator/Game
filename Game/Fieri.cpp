@@ -5,8 +5,8 @@
 Fieri::Fieri()
 {
 	intro = "Hey man, Guy Fieri here and we got a problem.\nAfter filiming a bunch of Diners, Drive Ins, and Dives, I've become bored of reviewing other people's food. I want a grill off!!!";
-	challenge = "Bet you cant grill a meaner barbecue than me!\nIf you can cook I'll let you pass... if you cant, I'm gonna stuff you into this here rocket, dunk it in barbecue sauce, and send you off to flavortown!!";
-	fightOptions = "A. Hit Guy Fieri\tB. Accept his challenge and grill!\nC. Run away";
+	challenge = "\nBet you cant grill a meaner barbecue than me!\nIf you can cook I'll let you pass... if you cant, I'm gonna stuff you into this here rocket, dunk it in barbecue sauce, and send you off to flavortown!!";
+	fightOptions = "\nA. Hit Guy Fieri\tB. Accept his challenge and grill!\nC. Run away";
 	bossLosesResponse = "\nGuy fieri tries your barbecue!'\nDamn! You can really grill! All right there cowboy take this LEAN CUISINE that I've autographed and be on your way!'\n";
 }
 
@@ -57,6 +57,14 @@ int Fieri::fightBoss(Player player) {
 				return 100;
 			}
 			
+		}
+		else {
+			std::cout << "\nYou don't have anything to grill...\n";
+			std::cout << "\nGuy Fieri is not impressed! He very quickly grills up a thick triple cheeseburger.\n'I call this the triple-bypasss burger!' He easily beats you in the grill off!\n";
+			std::cout << "\nYou LOSE!!!! Guy Fieri stuffs you into the rocket!!\nHe dunks the rocket in barbecue sauce and launches you off to Flavortown!!!!";
+			std::cout << "\nYou are KILLED!!!!";
+			return 100;
+		
 		}
 	}
 	else if (response == "c") {

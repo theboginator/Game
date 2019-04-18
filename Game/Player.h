@@ -13,6 +13,8 @@ public:
 	int checkqty(std::string item); //Check how much of an item the player has; if none returns 0; 
 	int checkHealth(); //Returns health
 
+	void setHealth(int newHealth); //Set the player health (used in hack continue)
+
 	bool inventoryContains(std::string check, int qty); //Check if inventory contains an item in at least the specified quantity
 
 	void addItem(std::string item); //Add an item to inventory

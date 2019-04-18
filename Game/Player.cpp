@@ -74,6 +74,9 @@ void Player::showInventory() { //Function to show inventory
 int Player::checkHealth() {
 	return health; //Returns health
 }
+void Player::setHealth(int newHealth) {
+	health = newHealth;
+}
 void Player::hurt(int damage){
 	health = health - damage;
 }// damage the player
