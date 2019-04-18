@@ -25,7 +25,7 @@ int Trashman::fightBoss(Player player) {
 	std::getline(std::cin, response);
 	std::transform(response.begin(), response.end(), response.begin(), ::tolower);
 		if (response == "A" || response == "a") {
-			if (player.inventoryContains("hockey_stick", 1)) {
+			if (player.inventoryContains("hockey stick", 1)) {
 				std::cout << "You hit Danny DeVito with a hockey stick. It's not very effective.\nDanny DeVito throws the trash can at you!";
 				//delay(2000);
 				std::cout << "\nYou are INJURED (-20 health) but at least you can now attempt to escape...";

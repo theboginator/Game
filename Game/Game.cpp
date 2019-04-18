@@ -69,8 +69,8 @@ void Game::setupRooms() {
 	rooms[5]->chest.setChest(items, true);; //Load the chest in room 5
 	rooms[5]->containsChest = true;
 	items = { "Lean Cuisine", "cake", "gas", "cake", "lighter fluid" };
-	rooms[9]->chest.setChest(items, true); //Load the chest in room 9
-	rooms[9]->containsChest = true;
+	rooms[8]->chest.setChest(items, true); //Load the chest in room 9
+	rooms[8]->containsChest = true;
 	for (int ctr = 0; ctr <= 10; ctr++) {
 		rooms[ctr]->setDescription(ctr);
 	}
@@ -176,6 +176,8 @@ void Game::battleBoss(Room* currentRoom) {
 			if (damage = 0) { //Player winssz
 				std::cout << currentBoss.getBossLosesResponse();
 				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				currentPlayer.addItem("steamed hams");
+				currentPlayer.addItem("steamed hams"); //Award the player steamed hams for winning
 				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
 			}
 			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
@@ -196,6 +198,7 @@ void Game::battleBoss(Room* currentRoom) {
 			if (damage = 0) { //Player winssz
 				std::cout << currentBoss.getBossLosesResponse();
 				currentBoss.disabled = true; //Mark the boss as disabled to exit the fight
+				rooms[6]->setRooms(nullptr, nullptr, rooms[7], nullptr);//Remove the link between room 5 and 6 as the bridge is now out
 				rooms[currentRoom->getNumber()]->containsBoss = false; //Remove the enabled flag from room map
 			}
 			else if (currentPlayer.checkHealth() <= 0) { //End the game if the boss wins
@@ -256,8 +259,9 @@ void Game::beginGame() {
 			std::cout << currentRoom->getDescription() << std::endl; //Show the current room's description
 		}
 		if (currentRoom->containsBoss) { //If the player enters a room with a boss the boss fight happens first
-			std::cout << "There's a boss in the current room\n";
+			std::cout << "\n\n\n\n";
 			battleBoss(currentRoom);
+			currentRoom->containsBoss = false; //Once the fight is over deactivate the boss
 
 		}
 		userInput = getUserCommand(); //Get input from the user
@@ -275,6 +279,7 @@ void Game::beginGame() {
 			for (int ctr = 0; ctr < size; ctr++) {
 				currentPlayer.addItem(tempItems[ctr]);
 			}
+			currentRoom->clearItems();
 		}
 		else if (userInput == "unlock") {
 			std::cout << "user attempted to unlock a chest\n";
@@ -285,9 +290,9 @@ void Game::beginGame() {
 					Chest currentChest = currentRoom->getChest();; //Load the chest into temporary object
 					std::vector<std::string> tempItems = currentRoom->returnChestItems(); //Get the items from the chest
 					int size = static_cast<int>(tempItems.size());
-					for (int ctr = 0; ctr <= size; ctr++) {
+					for (int ctr = 0; ctr < size; ctr++) {
 						currentPlayer.addItem(tempItems[ctr]); //Load each item in the chest into the player's inventory
-						std::cout << tempItems[ctr]; //Print it to the screen
+						std::cout << tempItems[ctr] << ", "; //Print it to the screen
 					}
 					currentRoom->containsChest = false; //Deactivate the chest
 				}
@@ -304,8 +309,10 @@ void Game::beginGame() {
 			currentPlayer.showInventory();
 		}
 		else if (userInput == "health") {
-			std::cout << "\nYour health is ";
 			int health = currentPlayer.checkHealth();
+			std::cout << "\nYour health is " << health;
+			std::cout << "\n\n";
+			
 		}
 		else if (userInput == "showroom") {
 			std::cout << "\nYou are in room " << currentRoom->getNumber() << "\n";
@@ -320,6 +327,15 @@ void Game::beginGame() {
 		}
 		else if (userInput == "quit") {
 			endTheGame(false);
+		}
+		else if (userInput == "weedwhack") {
+			if (currentRoom->getNumber() == 1) {
+				currentRoom = rooms[6];
+				std::cout << "\nYou weedwhack the area and trim back some shrubbery exposing a hidden trail.\nFeeling brave, you decide to follow it! It takes you through treacherous woods but definitely bypassed some enemies.";
+			}
+			else {
+				std::cout << "\nYou run the weedwhacker. It doesn't reveal anything but it does shred some of the forest floor.";
+			}
 		}
 		else { //Prompt user again if command wasn't recognized.
 			std::cout << "That command wasn't recognized... try again.";

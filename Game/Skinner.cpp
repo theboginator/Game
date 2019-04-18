@@ -7,7 +7,7 @@ Skinner::Skinner()
 	intro = "\nYou run into a strange yellow man in a suit. \"Ahh, Superintendant Chalmers! Welcome! I hope you're prepared for an unforgettable luncheon!\n";
 	challenge = "\nFor lunch today we're having Steamed Hams! And if you tip me well, say, how about 4 gold coins... I might be able to spare you some extra hams!\n";
 	fightOptions = "\nA. Ignore Principal Skinner\tB. Hit Principal Skinner\nC. Barter with Principal Skinner";
-	bossLosesResponse = "You drive a hard bargain, Superintendent! But I shall accept. Here, enjoy these Steamed hams on your trip!";
+	bossLosesResponse = "\nYou drive a hard bargain, Superintendent! But I shall accept. Here, enjoy these Steamed hams on your trip!";
 }
 
 

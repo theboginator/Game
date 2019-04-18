@@ -26,6 +26,9 @@ std::vector<std::string> Room::returnChestItems() {
 	std::vector<std::string> stuff = chest.returnItems();
 	return stuff;
 }
+void Room::clearItems() {
+	items.clear();
+}
 
 std::string Room::getDescription() {
 	return this->description;

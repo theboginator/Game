@@ -22,6 +22,7 @@ public:
 	void setRooms(Room* northRoom, Room* eastRoom, Room* southRoom, Room* westRoom);
 	void configureChest(std::vector<std::string> items);
 	void setItems(std::vector<std::string> newitems);
+	void clearItems();
 
 	Room* getRoom(std::string direction); //Returns a room in the requested direction
 	Boss getBoss(); //Returns the boss in the room

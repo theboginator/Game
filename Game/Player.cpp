@@ -39,7 +39,7 @@ bool Player::inventoryContains(std::string check, int qty) { //Check if inventor
 			tempqty++;
 		}
 	}
-	if (tempqty == qty) {
+	if (tempqty >= qty) {
 		return true;
 	}
 	else {
@@ -67,7 +67,7 @@ void Player::useItem(std::string item) { //Use an item in the inventory; print
 void Player::showInventory() { //Function to show inventory
 	int size = static_cast<int>(inventory.size());
 	for (int ctr = 0; ctr < size; ctr++) {
-		std::cout << inventory[ctr] << " ";
+		std::cout << inventory[ctr] << ", ";
 	}
 	std::cout << "\nDone Printing\n";
 }

@@ -7,7 +7,7 @@ Mortimer::Mortimer()
 	intro = "\nWell, Ha cha cha! Another bridge-crosser! Here I was thinking I'd have to scrouge around for another meal but, lucky me! I find another fool to extort!\n";
 	challenge = "\nListen kid, here's the deal. I'll let you cross the bridge if you give me half of your food... and that key I see sticking out of your pocket! Them's my terms!\nOh, and if you try anything funny... I'll push you off the edge!\n";
 	fightOptions = "\nA. Give in to Mortimer Mouse's demands\tB. Hit Mortimer Mouse\n C.You threaten to burn down the bridge";
-	bossLosesResponse = "Alright, alright kid. Don't burn my bridge, you can cross the stupid ravine.\n\n\n You cross the ravine. After you exit at the other side, you burn the bridge down anyway.";
+	bossLosesResponse = "\nMortimer turns pale. 'Alright, alright kid. Don't burn my bridge, you can cross the stupid ravine.'\n\n\n You cross the ravine. After you exit at the other side, you burn the bridge down anyway.";
 }
 
 
@@ -29,7 +29,7 @@ int Mortimer::fightBoss(Player player) {
 		player.removeItem("key", 1); //Remove a key (if present)
 	}
 	else if (response == "b") {
-		if (player.inventoryContains("hockey_stick", 1)) {
+		if (player.inventoryContains("hockey stick", 1)) {
 			std::cout << "You HIT Mortimer Mouse with the hockey stick! He is angered by your attack and decides to hit back!";
 			std::cout << "Mortimer grabs the newspaper he stole from Mickey Mouse and hits back! You are INJURED!";
 			return 25;
@@ -43,13 +43,14 @@ int Mortimer::fightBoss(Player player) {
 	}
 	else if (response == "c") {
 		std::cout << "You threaten to burn down the bridge!";
+		std::cout << bossLosesResponse;
 		if (player.inventoryContains("gas", 2)) {
 			disabled = true;
 			return 0;
 		}
 		else {
-			std::cout << "Mortimer is not fooled, he can see you have no way to realistically burn the bridge down.";
-			std::cout << "'Threaten to burn my bridge, eh? I bet you scream just like Goofy when I throw you over the edge!'\nMortimer pushes you off the edge!";
+			std::cout << "\nMortimer is not fooled, he can see you have no way to realistically burn the bridge down.";
+			std::cout << "\n'Threaten to burn my bridge, eh? I bet you scream just like Goofy when I throw you over the edge!'\nMortimer pushes you off the edge!";
 			std::cout << "\nYou are KILLED!";
 			return 100;
 		}
