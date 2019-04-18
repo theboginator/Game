@@ -4,10 +4,10 @@
 
 Mortimer::Mortimer()
 {
-	intro = "\nWell, Ha cha cha! Another bridge-crosser! Here I was thinking I'd have to scrouge around for another meal but, lucky me! I find another fool to extort!\n";
-	challenge = "\nListen kid, here's the deal. I'll let you cross the bridge if you give me half of your food... and that key I see sticking out of your pocket! Them's my terms!\nOh, and if you try anything funny... I'll push you off the edge!\n";
+	intro = "\n'Well, Ha cha cha! Another bridge-crosser! Here I was thinking I'd have to scrouge around for another meal but, lucky me! I find another fool to extort!'\n";
+	challenge = "\n'Listen kid, here's the deal. I'll let you cross the bridge if you give me half of your food... and that key I see sticking out of your pocket! Them's my terms!\nOh, and if you try anything funny... I'll push you off the edge!'\n";
 	fightOptions = "\nA. Give in to Mortimer Mouse's demands\tB. Hit Mortimer Mouse\n C.You threaten to burn down the bridge";
-	bossLosesResponse = "\nMortimer turns pale. 'Alright, alright kid. Don't burn my bridge, you can cross the stupid ravine.'\n\n\n You cross the ravine. After you exit at the other side, you burn the bridge down anyway.";
+	bossLosesResponse = "\nMortimer turns pale. 'Alright, alright kid. Don't burn my bridge, you can cross the stupid ravine.'\n\n\n You cross the ravine. After you exit at the other side, you light the bridge on fire anyway.";
 }
 
 

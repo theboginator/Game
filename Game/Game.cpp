@@ -144,7 +144,7 @@ void Game::showLoot(std::vector<std::string> tempItems) {
 	std::cout << "You have found.... ";
 	int size = static_cast<int>(tempItems.size());
 	for (int ctr = 0; ctr < size; ctr++) {
-		std::cout << tempItems[ctr] << " ";
+		std::cout << tempItems[ctr] << ", ";
 	}
 	std::cout << "\ndone printing\n";
 }
@@ -370,36 +370,4 @@ void Game::beginGame() {
 		std::cout << "\n\n\n";
 
 	}
-
-
-	
-	/*
-	WHILE USERINPUT != QUIT
-		if currentRoom contains a boss & boss is enabled
-			while boss is not defeated:
-				BossFight!!!!!
-		else
-		print room description
-		listen for keyword
-		if keyword = north, south, east, west
-			attemptToMove
-		else if keyword = search, explore, eat, weedwhack, inventory, stats
-			switch keyword:
-				search the area
-					any items in the room are deleted
-					add items to playerInventory
-				explore
-					if room has secret and secret is exposed
-					use shortcut set new room to shortcut exit
-				eat
-					if playerInventory contains cake
-					remove 1 cake from inventory
-					+20 food to stats
-				weedwhack 
-					if playerInventory contains weedwhacker
-						if room has secret
-						expose secret
-
-	*/
-	
 }

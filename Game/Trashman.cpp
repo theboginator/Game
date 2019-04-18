@@ -7,10 +7,10 @@
 Trashman::Trashman()
 {
 	intro = "\nDANNY DEVITO would like to battle!!!!!\n";
-	challenge = "\nI'm the trashman!!! I eat garbage!\n";
+	challenge = "\n'I'm the trashman!!! I eat garbage!'\n";
 	fightOptions = "\nA. Hit Danny DeVito\tB. Run!\nC. Offer Danny DeVito a pair of glasses\n";
 	bossWinsResponse = "";
-	bossLosesResponse = "\nCareful kid, you reminded me of Cricket and I almost hit you with a trash can. You'd better watch out. I'M THE TRASHMAN!\nNow's your chance to escape. He seems to have lost interest in you!";
+	bossLosesResponse = "\n'Careful kid, you reminded me of Cricket and I almost hit you with a trash can. You'd better watch out. I'M THE TRASHMAN!'\nNow's your chance to escape. He seems to have lost interest in you!";
 }
 
 
